@@ -22,6 +22,7 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
 //AppRoutMod1
 
 const routes: Routes = [
+  { path: '', redirectTo: 'cliente', pathMatch: 'full' },
   { path: 'articulos', redirectTo: 'articulos', pathMatch: 'full' },
   { path: 'add_articulo', component: ArticuloAddComponent },
   { path: 'articulo', component: ArticuloListComponent },
