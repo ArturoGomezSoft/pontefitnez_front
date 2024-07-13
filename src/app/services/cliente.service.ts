@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente/cliente.model';
 
-const baseUrl = 'http://localhost:8080/api/clientes';
+const baseUrl = 'https://pontefitnez-back-1-0-0.onrender.com/api/clientes';
 
 @Injectable({
   providedIn: 'root'
