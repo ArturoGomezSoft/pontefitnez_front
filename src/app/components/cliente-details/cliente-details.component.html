@@ -1,0 +1,126 @@
+@if (viewMode){
+    @if (currentCliente.id){
+    <h4>Cliente</h4>
+    <div>
+      <label><strong>Dni:</strong></label> {{ currentCliente.dni }}
+    </div>
+    <div>
+      <label><strong>Nombres:</strong></label> {{ currentCliente.nombres }}
+    </div>
+    <div>
+      <label><strong>Apellidos:</strong></label> {{ currentCliente.apellidos }}
+    </div>
+    <div>
+      <label><strong>Celular:</strong></label> {{ currentCliente.celular }}
+    </div>
+    <div>
+      <label><strong>Fecha_nac:</strong></label> {{ currentCliente.fecha_nac }}
+    </div>
+    <div>
+      <label><strong>Fecha_ini:</strong></label> {{ currentCliente.fecha_ini }}
+    </div>
+    <div>
+      <label><strong>Fecha_fin:</strong></label> {{ currentCliente.fecha_fin }}
+    </div>
+<!-- MoDetComp1 -->
+  
+    <a class="badge badge-warning" routerLink="/cliente/{{ currentCliente.id }}">
+      Edit
+    </a>
+    } @else {<p>Please click on a Cliente...</p>}
+  } @else {
+    @if (currentCliente.id) {
+    <div class="edit-form">
+      <h4>Cliente</h4>
+      <form>
+        <div class="form-group">
+          <label for="dni">Dni</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dni"
+            [(ngModel)]="currentCliente.dni"
+            name="dni"
+          />
+        </div>
+        <div class="form-group">
+          <label for="nombres">Nombres</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombres"
+            [(ngModel)]="currentCliente.nombres"
+            name="nombres"
+          />
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellidos"
+            [(ngModel)]="currentCliente.apellidos"
+            name="apellidos"
+          />
+        </div>
+        <div class="form-group">
+          <label for="celular">Celular</label>
+          <input
+            type="text"
+            class="form-control"
+            id="celular"
+            [(ngModel)]="currentCliente.celular"
+            name="celular"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fecha_nac">Fecha_nac</label>
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="fecha_nac"
+            [(ngModel)]="currentCliente.fecha_nac"
+            name="fecha_nac"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fecha_ini">Fecha_ini</label>
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="fecha_ini"
+            [(ngModel)]="currentCliente.fecha_ini"
+            name="fecha_ini"
+          />
+        </div>
+        <div class="form-group">
+          <label for="fecha_fin">Fecha_fin</label>
+          <input
+            type="datetime-local"
+            class="form-control"
+            id="fecha_fin"
+            [(ngModel)]="currentCliente.fecha_fin"
+            name="fecha_fin"
+          />
+        </div>
+<!-- MoDetComp2 -->
+  
+        <div class="form-group">
+          <label><strong>Status:</strong></label>
+        </div>
+      </form>
+  
+      <button class="badge badge-danger mr-2" (click)="deleteCliente()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateCliente()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    } @else {<p>Cannot access this Cliente...</p>}
+  }

@@ -1,0 +1,29 @@
+<div class="edit-form">
+  <h4>Venta</h4>
+  <form>
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="currentVenta.nombre"/>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad</label>
+      <input type="number" class="form-control" id="cantidad" name="cantidad" [(ngModel)]="currentVenta.cantidad"/>
+    </div>
+    <div class="form-group">
+      <label for="costo">Costo</label>
+      <input type="number" class="form-control" id="costo" name="costo" [(ngModel)]="currentVenta.costo"/>
+    </div>
+    <div class="form-group">
+      <label for="tipo_pago">Tipo pago</label>
+      <input type="text" class="form-control" id="tipo_pago" name="tipo_pago" [(ngModel)]="currentVenta.tipo_pago"/>
+    </div>
+    <div class="form-group">
+      <label for="fecha_hora">Fecha y Hora</label>
+      <input type="datetime-local" class="form-control" id="fecha_hora" name="fecha_hora" [(ngModel)]="currentVenta.fecha_hora"/>
+    </div>
+  </form>
+  
+  <button type="submit" class="badge badge-success mb-2" (click)="updateVenta()">Actualizar</button>
+  <button class="badge badge-danger mr-2" (click)="deleteVenta()">Eliminar</button>
+  <p>{{ message }}</p>
+</div>

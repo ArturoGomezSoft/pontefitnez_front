@@ -1,0 +1,53 @@
+<div>
+    <div class="submit-form">
+      @if (!submitted) {
+        <div class="form-group">
+          <label>Articulo:</label>
+          <select class="form-control"
+              id="nombre"
+              name="nombre"
+              [(ngModel)]="reposicion.nombre"
+              (ngModelChange)="onArticuloSelect($event)"
+              required>
+          <option *ngFor="let articulo of articulos" [value]="articulo.id">{{ articulo.nombre }}</option>
+          </select>
+        </div>
+        <div *ngIf="selectedArticulo" class="form-group">
+          <label>Precio:</label>
+          <input class="form-control"
+            type="text"
+            id=".precio"
+            name="precio"
+            [value]="selectedArticulo.precio"
+            [(ngModel)]="reposicion.costo"
+            required
+            readonly/>
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input class="form-control"
+            type="number"
+            id="cantidad"
+            name="cantidad"
+            [(ngModel)]="reposicion.cantidad"
+            required/>
+        </div> 
+        <div class="form-group">
+          <label for="tipopago">Tipo de pago</label>
+          <select class="form-control"
+                  id="tipopago"
+                  name="tipopago"
+                  [(ngModel)]="reposicion.tipo_pago"
+                  required>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Yape">Yape</option>
+          </select>
+        </div>
+  
+      <button (click)="createReposicion()" class="btn btn-success">Submit</button>
+      } @else {
+      <h4>Reposicion was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newReposicion()">Add</button>
+      }
+    </div>
+  </div>

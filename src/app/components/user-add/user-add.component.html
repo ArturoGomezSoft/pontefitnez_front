@@ -1,0 +1,34 @@
+<div>
+    <div class="submit-form">
+      @if (!submitted) {
+      <div class="form-group">
+        <label for="usuario">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          id="usuario"
+          required
+          [(ngModel)]="user.usuario"
+          name="usuario"
+        />
+      </div>
+      <div class="form-group">
+        <label for="contrasena">Contrasena</label>
+        <input
+          type="text"
+          class="form-control"
+          id="contrasena"
+          required
+          [(ngModel)]="user.contrasena"
+          name="contrasena"
+        />
+      </div>
+<!-- MoAddComp1 -->
+  
+      <button (click)="saveUser()" class="btn btn-success">Submit</button>
+      } @else {
+      <h4>User was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newUser()">Add</button>
+      }
+    </div>
+  </div>

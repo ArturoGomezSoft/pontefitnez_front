@@ -1,0 +1,123 @@
+<div>
+    <div class="submit-form">
+      @if (!submitted) {
+      <div class="form-group">
+        <label for="dni">DNI</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dni"
+          required
+          [(ngModel)]="cliente.dni"
+          name="dni"
+        />
+      </div>
+      <div class="form-group">
+        <label for="nombres">Nombres</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombres"
+          required
+          [(ngModel)]="cliente.nombres"
+          name="nombres"
+        />
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="apellidos"
+          required
+          [(ngModel)]="cliente.apellidos"
+          name="apellidos"
+        />
+      </div>
+      <div class="form-group">
+        <label for="celular">Celular</label>
+        <input
+          type="text"
+          class="form-control"
+          id="celular"
+          required
+          [(ngModel)]="cliente.celular"
+          name="celular"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fecha_nac">Fecha nacimiento</label>
+        <input
+          type="datetime-local"
+          class="form-control"
+          id="fecha_nac"
+          required
+          [(ngModel)]="cliente.fecha_nac"
+          name="fecha_nac"
+        />
+      </div>
+      <div class="form-group">
+        <label for="fecha_ini">Fecha inicio</label>
+        <input
+          type="datetime-local"
+          class="form-control"
+          id="fecha_ini"
+          required
+          [(ngModel)]="fechaInicio"
+          (change)="actualizarFechaFin()"
+          name="fecha_ini"
+        />
+      </div>
+      <div class="form-group">
+        <label>Membresia:</label>
+        <select class="form-control"
+            id="nombre"
+            name="nombre"
+            [(ngModel)]="venta.nombre"
+            (ngModelChange)="onMembresiaSelect($event)"
+            required>
+        <option *ngFor="let membresia of membresias" [value]="membresia.id">{{ membresia.nombre }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Fecha fin</label>
+        <input class="form-control"
+          type="datetime-local"
+          id="fecha_fin"
+          name="fecha_fin"
+          [(ngModel)]="fechaFin"
+          required
+          readonly
+        />
+      </div>
+      <div *ngIf="selectedMembresia" class="form-group">
+        <label>Precio:</label>
+        <input class="form-control"
+          type="text"
+          id="precio"
+          name="precio"
+          [value]="selectedMembresia.precio"
+          [(ngModel)]="venta.costo"
+          required
+          readonly/>
+      </div>
+      <div class="form-group">
+        <label>Tipo de pago</label>
+        <select class="form-control"
+                id="tipo_pago"
+                name="tipo_pago"
+                [(ngModel)]="venta.tipo_pago"
+                required>
+          <option value="Efectivo">Efectivo</option>
+          <option value="Yape">Yape</option>
+        </select>
+      </div>
+<!-- MoAddComp1 -->
+  
+      <button (click)="saveCliente()" class="btn btn-success">Submit</button>
+      } @else {
+      <h4>Cliente was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newCliente()">Add</button>
+      }
+    </div>
+  </div>
