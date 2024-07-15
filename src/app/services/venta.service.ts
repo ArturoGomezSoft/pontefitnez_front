@@ -20,6 +20,14 @@ export class VentaService {
     return this.http.get<Venta>(`${baseUrl}/${id}`);
   }
 
+  findByFechaManana(): Observable<Venta[]> {
+    return this.http.get<Venta[]>(`${baseUrl}/manana`);
+  }
+
+  findByFechaTarde(): Observable<Venta[]> {
+    return this.http.get<Venta[]>(`${baseUrl}/tarde`);
+  }
+
   findByFechaHoy(): Observable<Venta[]> {
     return this.http.get<Venta[]>(`${baseUrl}/hoy`);
   }

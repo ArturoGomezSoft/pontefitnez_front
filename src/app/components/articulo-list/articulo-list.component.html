@@ -6,6 +6,7 @@
           class="form-control"
           placeholder="Search by nombre"
           [(ngModel)]="nombre"
+          (keyup.enter)="searchNombre()"
         />
         <div class="input-group-append">
           <button

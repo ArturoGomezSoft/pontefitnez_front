@@ -1,6 +1,8 @@
 <div class="col-md-8">
   <div class="input-group mb-3">
     <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="listarManana()">Mañana</button>
+      <button class="btn btn-outline-secondary" type="button" (click)="listarTarde()">tarde</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarHoy()">Hoy</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarSemana()">Semana</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarMes()">Mes</button>
@@ -9,7 +11,7 @@
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5" *ngIf="!loading; else loadingTemplate">
   <h2 class="mb-4">Ventas</h2>
   <table class="table table-striped table-bordered">
     <thead class="thead-dark">
@@ -33,6 +35,19 @@
           <button class="btn btn-danger btn-sm">Eliminar</button>
         </td>
       </tr>
+      <tr class="font-weight-bold">
+        <td colspan="2">Total en Efectivo</td>
+        <td>S/. {{ totalEfectivo }}</td>
+        <td colspan="3"></td>
+      </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-overlay">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>
