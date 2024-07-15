@@ -12,6 +12,7 @@ export class VentaAddComponent implements OnInit {
   articulos: any[] = [];
   selectedArticulo: any = { precio: 0.00 };
   seleccionoArticulo: boolean = false;
+  loading: boolean = false;
 
   venta: Venta = {
 	nombre: '',
@@ -25,7 +26,8 @@ export class VentaAddComponent implements OnInit {
   constructor(private ventaService: VentaService, private articuloService: ArticuloService) { }
 
   ngOnInit(): void {
-    this.articuloService.findAllArticulo().subscribe(data => {this.articulos = data;});
+    this.loading = true;
+    this.articuloService.findAllArticulo().subscribe(data => {this.articulos = data; this.loading = false;});
   }
 
   onArticuloSelect(event: any): void {
@@ -34,6 +36,7 @@ export class VentaAddComponent implements OnInit {
   }
 
   createVenta(): void {
+    this.loading = true;
 	const data = {
 		nombre: this.selectedArticulo.nombre,
 		cantidad: this.venta.cantidad,
@@ -43,7 +46,7 @@ export class VentaAddComponent implements OnInit {
 	};
 
 	this.ventaService.createVenta(data)
-      	.subscribe({next: (res) => { this.submitted = true; }});
+      	.subscribe({next: (res) => { this.submitted = true; this.loading = false;}});
   }
 
   newVenta(): void {

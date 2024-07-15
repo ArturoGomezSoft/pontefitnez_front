@@ -15,6 +15,7 @@ export class ClienteAddComponent {
   selectedMembresia: any = { precio: 0.00 };
   fechaInicio: string = '';
   fechaFin: string = '';
+  loading: boolean = false;
 
   cliente: Cliente = {
     dni: '',
@@ -37,7 +38,8 @@ export class ClienteAddComponent {
   constructor(private clienteService: ClienteService, private membresiaService: MembresiaService, private ventaService:VentaService) { }
 
   ngOnInit(): void {
-    this.membresiaService.getAll().subscribe(data => {this.membresias = data;});
+    this.loading = true;
+    this.membresiaService.getAll().subscribe(data => {this.membresias = data; this.loading = false;});
   }
 
   actualizarFechaFin(): void {
@@ -58,7 +60,7 @@ export class ClienteAddComponent {
 
   createMembresia(): void {
     const data = {
-      nombre: this.venta.nombre,
+      nombre: this.selectedMembresia.nombre,
       cantidad: 1,
       costo: this.selectedMembresia.precio,
       tipo_pago: this.venta.tipo_pago,
@@ -69,6 +71,7 @@ export class ClienteAddComponent {
   }
 
   saveCliente(): void {
+    this.loading = true;
     const data = {
       dni: this.cliente.dni,
       nombres: this.cliente.nombres,
@@ -83,7 +86,7 @@ export class ClienteAddComponent {
 
     this.clienteService.create(data)
     .subscribe({
-        next: () => {this.submitted = true;},
+        next: () => {this.submitted = true; this.loading = false;},
         error: (e) => console.error(e)
     });
   }

@@ -13,21 +13,28 @@ export class ClienteListComponent implements OnInit {
   currentCliente: Cliente = {};
   currentIndex = -1;
   dni = '';
+  loading: boolean = false;
 
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.retrieveClientes();
   }
 
   retrieveClientes(): void {
+    this.loading = true;
     this.clienteService.getAll()
       .subscribe({
         next: (data) => {
           this.clientes = data;
           console.log(data);
+          this.loading = false;
         },
-        error: (e) => console.error(e)
+        error: (e) => {
+          console.log(e);
+          this.loading = false;
+        }
       });
   }
 
@@ -54,6 +61,7 @@ export class ClienteListComponent implements OnInit {
   }
 
   searchDni(): void {
+    this.loading = true;
     this.currentCliente = {};
     this.currentIndex = -1;
 
@@ -62,9 +70,9 @@ export class ClienteListComponent implements OnInit {
         next: (data) => {
           this.clientes = data;
           console.log(data);
+          this.loading = false;
         },
         error: (e) => console.error(e)
       });
   }
-
 }

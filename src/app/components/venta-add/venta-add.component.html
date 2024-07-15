@@ -1,4 +1,4 @@
-<div class="submit-form">
+<div class="submit-form" *ngIf="!loading; else loadingTemplate">
 	@if (!submitted) {
 		<div class="form-group">
 			<label>Articulo:</label>
@@ -8,7 +8,7 @@
 					[(ngModel)]="venta.nombre"
 					(ngModelChange)="onArticuloSelect($event)"
 					required>
-			<option *ngFor="let articulo of articulos" [value]="articulo.nombre">{{ articulo.nombre }}</option>
+			<option *ngFor="let articulo of articulos" [value]="articulo.id">{{ articulo.nombre }}</option>
 			</select>
 		</div>
 		<div *ngIf="selectedArticulo" class="form-group">
@@ -48,3 +48,11 @@
       <button class="btn btn-success" (click)="newVenta()">Agregar</button>
 	}
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-overlay">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

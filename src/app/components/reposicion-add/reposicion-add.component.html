@@ -1,5 +1,5 @@
 <div>
-    <div class="submit-form">
+    <div class="submit-form" *ngIf="!loading; else loadingTemplate">
       @if (!submitted) {
         <div class="form-group">
           <label>Articulo:</label>
@@ -50,4 +50,12 @@
       <button class="btn btn-success" (click)="newReposicion()">Add</button>
       }
     </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-overlay">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
+</ng-template>

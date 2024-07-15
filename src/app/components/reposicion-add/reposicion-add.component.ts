@@ -12,6 +12,7 @@ export class ReposicionAddComponent implements OnInit {
   articulos: any[] = [];
   selectedArticulo: any = { precio: 0.00 };
   seleccionoArticulo: boolean = false;
+  loading: boolean = false;
 
   reposicion: Reposicion = {
 	nombre: '',
@@ -26,7 +27,8 @@ export class ReposicionAddComponent implements OnInit {
   constructor(private reposicionService: ReposicionService, private articuloService: ArticuloService) { }
 
   ngOnInit(): void {
-      this.articuloService.findAllArticulo().subscribe(data => {this.articulos = data;});
+    this.loading = true;
+      this.articuloService.findAllArticulo().subscribe(data => {this.articulos = data; this.loading = false;});
   }
 
   onArticuloSelect(event: any): void {
@@ -35,6 +37,7 @@ export class ReposicionAddComponent implements OnInit {
   }
 
   createReposicion(): void {
+    this.loading = true;
     const data = {
       nombre: this.selectedArticulo.nombre,
       cantidad: this.reposicion.cantidad,
@@ -43,7 +46,7 @@ export class ReposicionAddComponent implements OnInit {
     };
   
     this.reposicionService.createReposicion(data)
-          .subscribe({next: (res) => { this.submitted = true; }});
+          .subscribe({next: (res) => { this.submitted = true;  this.loading = false;}});
   }
 
   saveReposicion(): void {

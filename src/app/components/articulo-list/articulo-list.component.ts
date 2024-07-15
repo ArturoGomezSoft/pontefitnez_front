@@ -13,6 +13,7 @@ export class ArticuloListComponent implements OnInit {
   currentArticulo: Articulo = {};
   currentIndex = -1;
   nombre = '';
+  loading: boolean = false;
 
   constructor(private articuloService: ArticuloService) { }
 
@@ -21,11 +22,13 @@ export class ArticuloListComponent implements OnInit {
   }
 
   retrieveArticulos(): void {
+    this.loading = true;
     this.articuloService.getAll()
       .subscribe({
         next: (data) => {
           this.articulos = data;
           console.log(data);
+          this.loading = false;
         },
         error: (e) => console.error(e)
       });
@@ -54,6 +57,7 @@ export class ArticuloListComponent implements OnInit {
   }
 
   searchNombre(): void {
+    this.loading = true;
     this.currentArticulo = {};
     this.currentIndex = -1;
 
@@ -62,6 +66,7 @@ export class ArticuloListComponent implements OnInit {
         next: (data) => {
           this.articulos = data;
           console.log(data);
+          this.loading = false;
         },
         error: (e) => console.error(e)
       });

@@ -13,6 +13,7 @@ export class ReposicionListComponent implements OnInit {
   currentReposicion: Reposicion = {};
   currentIndex = -1;
   nombre = '';
+  loading: boolean = false;
 
   constructor(private reposicionService: ReposicionService) { }
 
@@ -21,11 +22,13 @@ export class ReposicionListComponent implements OnInit {
   }
 
   retrieveReposicions(): void {
+    this.loading = true;
     this.reposicionService.getAll()
       .subscribe({
         next: (data) => {
           this.reposicions = data;
           console.log(data);
+          this.loading = false;
         },
         error: (e) => console.error(e)
       });
@@ -54,32 +57,38 @@ export class ReposicionListComponent implements OnInit {
   }
 
   listarManana(): void {
+    this.loading = true;
     this.reposicionService.findByFechaManana()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 
   listarTarde(): void {
+    this.loading = true;
     this.reposicionService.findByFechaTarde()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 
   listarHoy(): void {
+    this.loading = true;
     this.reposicionService.findByFechaHoy()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 
   listarSemana(): void {
+    this.loading = true;
     this.reposicionService.findBySemanaActual()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 
   listarMes(): void {
+    this.loading = true;
     this.reposicionService.findByMesActual()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 
   listarTotal(): void {
+    this.loading = true;
     this.reposicionService.getAll()
-      .subscribe({next: (data) => {this.reposicions = data;}});
+      .subscribe({next: (data) => {this.reposicions = data; this.loading = false;}});
   }
 }

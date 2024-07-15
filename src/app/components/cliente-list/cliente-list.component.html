@@ -1,4 +1,4 @@
-<div class="list row">
+<div class="list row" *ngIf="!loading; else loadingTemplate">
     <div class="col-md-8">
       <div class="input-group mb-3">
         <input
@@ -39,4 +39,12 @@
         [currentCliente]="currentCliente"
       ></app-cliente-details>
     </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading-overlay">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
+</ng-template>
