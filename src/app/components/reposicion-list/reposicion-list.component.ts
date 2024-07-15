@@ -17,7 +17,7 @@ export class ReposicionListComponent implements OnInit {
   constructor(private reposicionService: ReposicionService) { }
 
   ngOnInit(): void {
-    this.retrieveReposicions();
+    this.listarHoy();
   }
 
   retrieveReposicions(): void {
@@ -51,6 +51,16 @@ export class ReposicionListComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  listarManana(): void {
+    this.reposicionService.findByFechaManana()
+      .subscribe({next: (data) => {this.reposicions = data;}});
+  }
+
+  listarTarde(): void {
+    this.reposicionService.findByFechaTarde()
+      .subscribe({next: (data) => {this.reposicions = data;}});
   }
 
   listarHoy(): void {

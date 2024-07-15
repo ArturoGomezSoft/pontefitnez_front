@@ -20,6 +20,14 @@ export class ReposicionService {
     return this.http.get<Reposicion>(`${baseUrl}/${id}`);
   }
 
+  findByFechaManana(): Observable<Reposicion[]> {
+    return this.http.get<Reposicion[]>(`${baseUrl}/manana`);
+  }
+
+  findByFechaTarde(): Observable<Reposicion[]> {
+    return this.http.get<Reposicion[]>(`${baseUrl}/tarde`);
+  }
+
   findByFechaHoy(): Observable<Reposicion[]> {
     return this.http.get<Reposicion[]>(`${baseUrl}/hoy`);
   }

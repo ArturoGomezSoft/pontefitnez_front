@@ -1,6 +1,8 @@
 <div class="col-md-8">
   <div class="input-group mb-3">
     <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="listarManana()">Mañana</button>
+      <button class="btn btn-outline-secondary" type="button" (click)="listarTarde()">Tarde</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarHoy()">Hoy</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarSemana()">Semana</button>
       <button class="btn btn-outline-secondary" type="button" (click)="listarMes()">Mes</button>
@@ -30,7 +32,6 @@
         <td>{{ reposicion.fecha_hora }}</td>
         <td>
           <button class="btn btn-primary btn-sm" routerLink="/reposicion/{{reposicion.id}}">Editar</button>
-          <button class="btn btn-danger btn-sm">Eliminar</button>
         </td>
       </tr>
     </tbody>

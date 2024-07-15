@@ -15,7 +15,7 @@ export class VentaAddComponent implements OnInit {
 
   venta: Venta = {
 	nombre: '',
-	cantidad: 0,
+	cantidad: 1,
 	costo: 0,
 	tipo_pago: '',
 	fecha_hora: '',
