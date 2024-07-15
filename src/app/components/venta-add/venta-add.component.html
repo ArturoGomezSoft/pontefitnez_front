@@ -8,7 +8,7 @@
 					[(ngModel)]="venta.nombre"
 					(ngModelChange)="onArticuloSelect($event)"
 					required>
-			<option *ngFor="let articulo of articulos" [value]="articulo.id">{{ articulo.nombre }}</option>
+			<option *ngFor="let articulo of articulos" [value]="articulo.nombre">{{ articulo.nombre }}</option>
 			</select>
 		</div>
 		<div *ngIf="selectedArticulo" class="form-group">
