@@ -45,9 +45,9 @@ export class ClienteAddComponent {
   actualizarFechaFin(): void {
     if (this.fechaInicio) {
       const fechaInicioDate = new Date(this.fechaInicio);
-      if (this.selectedMembresia.duracion === 'Diaria') {
+      if (this.selectedMembresia.tipo === 'Diaria') {
         fechaInicioDate.setDate(fechaInicioDate.getDate() + this.selectedMembresia.duracion);
-      } else if (this.selectedMembresia.duracion === 'Mensual') {
+      } else if (this.selectedMembresia.tipo === 'Mensual') {
         fechaInicioDate.setMonth(fechaInicioDate.getMonth() + this.selectedMembresia.duracion);
       }
       fechaInicioDate.setHours(fechaInicioDate.getHours() - 5);
