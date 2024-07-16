@@ -12,7 +12,7 @@ import { Venta } from '../../models/venta/venta.model';
 })
 export class ClienteAddComponent {
   membresias: any[] = [];
-  selectedMembresia: any = { precio: 0.00 };
+  selectedMembresia: any = { precio: 0.00, tipo : "Escoger membresia" };
   fechaInicio: string = '';
   fechaFin: string = '';
   loading: boolean = false;
