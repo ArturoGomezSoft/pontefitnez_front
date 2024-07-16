@@ -16,6 +16,7 @@ export class MembresiaDetailsComponent implements OnInit {
     nombre: '',
     precio: 0,
     duracion: 0,
+    tipo: '',
 //MoDetComp1
   };
   

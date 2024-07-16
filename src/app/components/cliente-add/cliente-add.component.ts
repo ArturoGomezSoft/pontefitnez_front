@@ -45,8 +45,12 @@ export class ClienteAddComponent {
   actualizarFechaFin(): void {
     if (this.fechaInicio) {
       const fechaInicioDate = new Date(this.fechaInicio);
-      fechaInicioDate.setMonth(fechaInicioDate.getMonth() + this.selectedMembresia.duracion);
-      //fechaInicioDate.setDate(fechaInicioDate.getDate() + 10);
+      if (this.selectedMembresia.duracion === 'Diaria') {
+        fechaInicioDate.setDate(fechaInicioDate.getDate() + this.selectedMembresia.duracion);
+      } else if (this.selectedMembresia.duracion === 'Mensual') {
+        fechaInicioDate.setMonth(fechaInicioDate.getMonth() + this.selectedMembresia.duracion);
+      }
+      fechaInicioDate.setHours(fechaInicioDate.getHours() - 5);
       this.fechaFin = fechaInicioDate.toISOString().slice(0, 16);
     } else {
       console.error('La fecha de inicio no es válida.');

@@ -13,6 +13,7 @@ export class MembresiaAddComponent {
 	nombre: '',
 	precio: 0,
 	duracion: 0,
+	tipo: '',
 //MoAddComp1
   };
   submitted = false;
@@ -24,6 +25,7 @@ export class MembresiaAddComponent {
 		nombre: this.membresia.nombre,
 		precio: this.membresia.precio,
 		duracion: this.membresia.duracion,
+		tipo: this.membresia.tipo,
 //MoAddComp2
     };
 
@@ -43,6 +45,7 @@ export class MembresiaAddComponent {
 		nombre: '',
 		precio: 0,
 		duracion: 0,
+		tipo: '',
 //MoAddComp3
     };
   }

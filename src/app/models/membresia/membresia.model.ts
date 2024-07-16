@@ -3,5 +3,6 @@ export class Membresia {
     nombre?: String;
     precio?: Number;
     duracion?: Number;
+    tipo?: String;
 //FrtCamps
   }

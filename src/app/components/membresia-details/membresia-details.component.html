@@ -10,6 +10,9 @@
     <div>
       <label><strong>Duracion:</strong></label> {{ currentMembresia.duracion }}
     </div>
+    <div>
+      <label><strong>Tipo:</strong></label> {{ currentMembresia.tipo }}
+    </div>
 <!-- MoDetComp1 -->
   
     <a class="badge badge-warning" routerLink="/membresia/{{ currentMembresia.id }}">
@@ -49,6 +52,16 @@
             id="duracion"
             [(ngModel)]="currentMembresia.duracion"
             name="duracion"
+          />
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tipo"
+            [(ngModel)]="currentMembresia.tipo"
+            name="tipo"
           />
         </div>
 <!-- MoDetComp2 -->

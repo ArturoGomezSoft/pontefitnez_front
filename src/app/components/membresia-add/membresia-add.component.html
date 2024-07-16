@@ -34,6 +34,17 @@
           name="duracion"
         />
       </div>
+      <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tipo"
+          required
+          [(ngModel)]="membresia.tipo"
+          name="tipo"
+        />
+      </div>
 <!-- MoAddComp1 -->
   
       <button (click)="saveMembresia()" class="btn btn-success">Submit</button>
